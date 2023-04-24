@@ -5,7 +5,6 @@
   "version": "1.0.0",
 
   "action": {
-    "default_popup": "src/options.html",
     "default_icon": {
       "16": "assets/images/richy@16.png",
       "24": "assets/images/richy@48.png",
@@ -31,13 +30,8 @@
   "permissions": [
     "activeTab",
     "storage",
-    "clipboardRead",
-    "<all_urls>"
+    "clipboardRead"
   ],
-
-  "options_ui": {
-    "page": "src/options.html"
-  },
 
   "content_scripts": [
     {
