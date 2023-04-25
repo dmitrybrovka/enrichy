@@ -4,11 +4,30 @@
  * {@link https://github.com/sparksuite/simplemde-markdown-editor}
  */
 const areaConfig = {
-	element: area,
 	spellChecker: false,
 	status: false,
 	autoDownloadFontAwesome: false,
-	forceSync: true
+	forceSync: true,
+	shortcuts: {
+		drawTable: 'Cmd-Alt-T'
+	},
+	insertTexts: {
+		image: ['![](', ')'],
+		link: ['[', ']()']
+	},
+	toolbar: [
+		'bold',
+		'italic',
+		'strikethrough',
+		'heading',
+		'|',
+		'unordered-list',
+		'ordered-list',
+		'quote',
+		'code',
+		'horizontal-rule',
+		'table'
+	]
 }
 
 function richyAreas(dom = document) {
@@ -16,7 +35,7 @@ function richyAreas(dom = document) {
 
 	areas.forEach((area) => {
 		if (!area.closest('.CodeMirror')) {
-			const mde = new SimpleMDE(areaConfig);
+			const mde = new SimpleMDE({...areaConfig, element: area});
 			mde.codemirror.on('change', () => area.dispatchEvent(new Event('input', {bubbles: true})));
 		}
 	});
