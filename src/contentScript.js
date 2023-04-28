@@ -1,5 +1,20 @@
 'use strict';
 
+const blackButton = {
+	name: 'black-button',
+	action: function customAction(editor) {
+		editor.codemirror.replaceSelection('{red}()');
+		// Move the cursor inside the brackets
+		const
+			cursorPos = editor.codemirror.getCursor();
+
+		editor.codemirror.setCursor(cursorPos.line, cursorPos.ch - 1);
+		editor.codemirror.focus();
+	},
+	className: 'fa fa-font',
+	title: 'Insert red text'
+};
+
 /**
  * {@link https://github.com/sparksuite/simplemde-markdown-editor}
  */
@@ -26,7 +41,8 @@ const areaConfig = {
 		'quote',
 		'code',
 		'horizontal-rule',
-		'table'
+		'table',
+		blackButton
 	]
 }
 
